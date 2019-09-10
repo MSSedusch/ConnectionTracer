@@ -50,7 +50,7 @@ namespace Client
                 client = null;
                 ErrorOnConnect++;
 
-                //Log($"Error on Connected: {ex.Message}");
+                Program.Log($"Error on Connected: {ex.Message}", true);
             }
 
             if (client == null)
@@ -70,7 +70,7 @@ namespace Client
                 try
                 {
                     var message = await reader.ReadLineAsync();
-                    //Log($"[{myNumber}/{_Clients.Count}] Read {message}");                        
+                    Program.Log($"Read {message}", true);
                     var matches = Regex.Matches(message, @".* (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d*).* (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(\d*).*\[(.*)\]");
                     if (matches.Count == 1)
                     {
@@ -96,23 +96,24 @@ namespace Client
                 catch (Exception ex)
                 {
                     ErrorOnRead++;
-                    //Log($"Error on Read: {ex.Message}");
+                    Program.Log($"Error on Read: {ex.Message}", true);
                     break;
                 }
 
-                await Task.Delay(new Random().Next(sleepTime, 3 * sleepTime));
+                await Task.Delay(sleepTime);
 
                 try
                 {
                     await writer.WriteLineAsync("Next");
                     await writer.FlushAsync();
+                    Program.Log($"Write Next", true);
                     State |= ConnectionState.Write;
                     MessageSent++;
                 }
                 catch (Exception ex)
                 {
                     ErrorOnWrite++;
-                    //Log($"Error on Write: {ex.Message}");
+                    Program.Log($"Error on Write: {ex.Message}", true);
                     break;
                 }
             }

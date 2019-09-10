@@ -31,9 +31,16 @@ namespace Client
         }
 
         static List<Client> _Clients = new List<Client>();
+        static bool verbose = false;
 
         static void Main(string[] args)
         {
+            if (args.Contains("-v"))
+            {
+                Log("Verbose found");
+                verbose = true;
+            }
+
             //int connections = 10;
             //string remoteHost = "connectiontracersf.westeurope.cloudapp.azure.com";
             //int remotePort = 9005;
@@ -67,10 +74,10 @@ namespace Client
                 sleepTime = int.Parse(args[4]);
 
             }
-            if (args.Length >= 6)
-            {
-                runtime = int.Parse(args[5]);
-            }
+            //if (args.Length >= 6)
+            //{
+            //    runtime = int.Parse(args[5]);
+            //}
             Log($"Start {String.Join(" ", args)}");
 
             while (true)
@@ -117,9 +124,16 @@ namespace Client
             }
         }
 
-        internal static void Log(string message)
+        internal static void Log(string message, bool msgVerbose = false)
         {
-            Console.WriteLine($"[{DateTime.Now.ToString("yyyyMMdd hh:mm:ss")}] {message}");
+            // msgVerbose = false + verbose = false -> true
+            // msgVerbose = false + verbose = true -> true
+            // msgVerbose = true + verbose = false -> false
+            // msgVerbose = true + verbose = true -> true
+            if ((!msgVerbose) || (msgVerbose && verbose))
+            {
+                Console.WriteLine($"[{DateTime.Now.ToString("yyyyMMdd hh:mm:ss")}] {message}");
+            }
         }
 
         //private static Thread StartListenerAsync(string remoteHost, int remotePort, int sleepTime)
