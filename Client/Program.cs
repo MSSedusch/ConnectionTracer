@@ -37,12 +37,12 @@ namespace Client
             //int connections = 10;
             //string remoteHost = "connectiontracersf.westeurope.cloudapp.azure.com";
             //int remotePort = 9005;
-            RunAsync(args);
+            RunAsync(args).Wait();
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
-        private static async void RunAsync(string[] args)
+        private static async Task RunAsync(string[] args)
         {
             int connections = 50000;
             string remoteHost = "server-lb.eastus2.cloudapp.azure.com";

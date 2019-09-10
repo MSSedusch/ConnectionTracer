@@ -14,6 +14,7 @@ namespace Server
         private TcpClient client;
 
         public bool Connected { get; set; }
+        public string ClientIP { get; set; }
 
         public Server(TcpClient client)
         {
@@ -30,6 +31,7 @@ namespace Server
                 var remoteIp = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
                 var localPort = ((IPEndPoint)client.Client.LocalEndPoint).Port;
                 var localIp = ((IPEndPoint)client.Client.LocalEndPoint).Address.ToString();
+                this.ClientIP = remoteIp;
 
                 var stream = client.GetStream();
                 StreamWriter writer = new StreamWriter(stream);
@@ -48,7 +50,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Program.Log($"Error: {ex.Message}");
+                //Program.Log($"Error: {ex.Message}");
                 this.Connected = false;
             }
         }

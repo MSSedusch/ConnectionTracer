@@ -40,11 +40,18 @@ namespace Server
             while (true)
             {
                 long connectedServers;
+                string clients = "[]";
+                string[] clientArray;
                 lock (_Servers)
                 {
                     connectedServers = _Servers.Count(server => server.Connected);
+                    clientArray = _Servers.Select(server => server.ClientIP).Distinct().ToArray();
                 }
-                Log($"Status: connected: {connectedServers} total:{_Servers.Count} last probe time: {(DateTime.Now - LastProbeTime).TotalSeconds} seconds ago");
+                if (clientArray.Length > 0)
+                {
+                    clients = String.Join(" ", clientArray);
+                }
+                Log($"Status: connected: {connectedServers} total:{_Servers.Count} clients:{clients} last probe time: {(DateTime.Now - LastProbeTime).TotalSeconds} seconds ago");
                 await Task.Delay(10000);
             }
         }
