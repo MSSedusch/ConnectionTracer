@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{4A97EFF5-6E88-4179-A098-E8D0B0A3A950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientCore", "ClientCore\ClientCore.csproj", "{9767C7DC-2441-457E-94F6-CC5431834588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{4A97EFF5-6E88-4179-A098-E8D0B0A3A950}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A97EFF5-6E88-4179-A098-E8D0B0A3A950}.Release|x64.ActiveCfg = Release|Any CPU
 		{4A97EFF5-6E88-4179-A098-E8D0B0A3A950}.Release|x64.Build.0 = Release|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Debug|x64.Build.0 = Debug|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Release|x64.ActiveCfg = Release|Any CPU
+		{9767C7DC-2441-457E-94F6-CC5431834588}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

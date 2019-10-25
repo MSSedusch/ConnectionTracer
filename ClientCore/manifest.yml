@@ -1,0 +1,6 @@
+﻿---
+applications:
+- name: dotnetconsole
+  no-route: true
+  health-check-type: process
+  memory: 1024M
